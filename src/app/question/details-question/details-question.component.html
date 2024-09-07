@@ -1,0 +1,63 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="main-panel">
+        <!-- Navbar -->
+        <app-navbar></app-navbar>
+        <!-- End Navbar -->
+  
+       <div class="content"style="background-color: white; margin-top: 24px;">
+        <div class="container"style="background-color: white; margin-top: 24px;">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Details Content</h2>
+                            <img class="img"  src="../../../assets/assets/img/quiz2.png" alt="update">
+                        </div>
+                        
+                        <form [formGroup]="questionForm">
+                           
+                            
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Question</label>
+                                    <input style="width: 500px;" class="form-control" type="text" formControlName="questionText" name="questionText" [ngClass]="{ 'error': questionForm.get('questionText')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Option 1</label>
+                                    <input class="form-control" type="text" formControlName="option1" name="option1" [ngClass]="{ 'error': questionForm.get('option1')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Option 2</label>
+                                    <input class="form-control" type="text" formControlName="option2" name="option2" [ngClass]="{ 'error': questionForm.get('option2')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Option 3</label>
+                                    <input class="form-control" type="text" formControlName="option3" name="option3" [ngClass]="{ 'error': questionForm.get('option3')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>right Answer Index</label>
+                                    <input class="form-control" type="text" formControlName="rightAnswerIndex" name="rightAnswerIndex" [ngClass]="{ 'error': questionForm.get('rightAnswerIndex')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Quiz</label>
+                                    <select class="form-control" formControlName="quizId" name="quizId" [ngClass]="{ 'error': questionForm.get('quizId')?.invalid && submitted }" required>
+                                        <option value="">Select quiz</option>
+                                        <option [value]="quiz.id" *ngFor="let quiz of quizList">{{ quiz.quizTitle }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-success" type="button" value="Save" (click)="saveQuestion()" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+        <app-footer></app-footer>
+    </div>
+  </div>
+  

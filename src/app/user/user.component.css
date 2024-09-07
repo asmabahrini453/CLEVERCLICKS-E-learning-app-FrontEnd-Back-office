@@ -1,0 +1,189 @@
+/* Styling for the pagination component */
+.pagination {
+  position: relative;
+  height: 40px;
+  width: fit-content; /* Adjusted to fit the content */
+  margin-top: 24px;
+  transform: translateX(-50%); /* Center the pagination */
+  left: 50%; /* Used with transform to center the pagination */
+  background: linear-gradient(45deg, #d5cdf4, #c9b6f9, #956BFF, #9368E9); /* Gradient background */
+  box-shadow: 2px 2px 10px #c9b6f9; /* Reduced shadow for less elevation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(1.5px);
+  border-radius: 2px;
+}
+
+  /* Pagination items */
+  .page-item {
+    list-style-type: none;
+    display: inline-block;
+  }
+  
+  /* Pagination links */
+  .page-link {
+    position: relative;
+    padding: 10px 15px; /* Smaller padding */
+    text-decoration: none;
+    color: #000; /* Black text color */
+    font-weight: 500;
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover and active states for pagination links */
+  .page-link:hover,
+  .page-item.active .page-link {
+    background: linear-gradient(45deg, #d5cdf4, #c9b6f9, #956BFF, #9368E9); /* Gradient background */
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto; 
+    max-height: calc(100vh - 100px); 
+  }
+  
+  .list-group-item .contents {
+    text-align: justify;
+  }
+
+  .list-group-item .content-images-wrapper {
+    display: inline-block;
+    margin-bottom: 10px; /* Optional: Add margin between content and images */
+  }
+
+  
+  .list-group-item img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px; /* Adjust margin as needed */
+  }
+  /* Add this to your component's CSS file */
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.status-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+
+}
+
+.status-button.pending {
+  background-color: #ffc107; /* Yellow */
+  color: #212529; /* Black */
+}
+
+.status-button.approved {
+  background-color: #28a745; /* Green */
+  color: #ffffff; /* White */
+}
+
+.status-button.refused {
+  background-color: #dc3545; /* Red */
+  color: #ffffff; /* White */
+}
+
+.status-button:hover {
+  filter: brightness(110%);
+}
+/* Add this to your component's CSS file */
+
+.status-approved {
+  color: #28a745; /* Green */
+}
+
+.status-refused {
+  color: #dc3545; /* Red */
+}
+.button-wrapper {
+  margin-left: 905px;
+}
+
+.status-button {
+  padding-left: 25px;
+  padding-right: 25px;
+
+}
+
+
+
+.button-wrapper {
+  margin-left: 905px;
+}
+
+.custom-status-button {
+  padding:  5px 25px;
+  border-radius: 5px;
+  border: 1px solid #8a2be2; /* Purple border */
+  background: transparent; /* Transparent background by default */
+  color: #8a2be2; /* Purple text color */
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.custom-status-button:hover {
+  background: linear-gradient(to right, #8a2be2, #800080); /* Purple gradient background on hover */
+  color: white; /* White text color on hover */
+}
+.edit-button-wrapper {
+  margin-left: 880px;
+}
+
+.edit-button {
+  padding: 10px 20px;
+  border: 1px solid #5f2be2;
+  color:  #5f2be2;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #ffffff;
+background-image: linear-gradient(315deg, #ffffff 0%, #91a6ff 74%);
+  
+    color: #000000;
+}
+
+/* Search Bar Styles */
+.input-group {
+    max-width: 300px; /* Smaller width */
+    margin: 16px; /* Center align the search bar */
+  }
+  
+  .input-group .form-control {
+    border-radius: 20px; /* Rounded corners */
+    border: 2px 1solid #007bff; /* Blue border */
+    box-shadow: 0 4px 8px rgba(0, 23, 255, 0.2); /* Blue shadow */
+  }
+  
+  .input-group-append .btn {
+  border-radius: 20px 20px; /* Rounded corners on the right side of the button */
+  border: 2px solid #d5cdf4; /* Blue border */
+  background-image: linear-gradient(45deg, #d5cdf4, #c9b6f9, #956BFF, #9368E9); /* Gradient background */
+  color: #000000; /* Dark purple text */
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Blue shadow */
+  margin-left: 16px;
+}
+
+/* Icon color adjustment */
+.nc-icon {
+  color: #0c0c0c; /* Dark purple icon */
+}
+
+  
+  /* Adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .input-group {
+      max-width: 100%; /* Full width on small screens */
+    }
+  }
+  

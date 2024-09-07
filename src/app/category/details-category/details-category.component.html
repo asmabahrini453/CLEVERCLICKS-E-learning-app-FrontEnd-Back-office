@@ -1,0 +1,92 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+
+    <div class="content" style="background-color: white; margin: 24px;">
+      <div class="container">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="col-sm-6">
+                <h2>Details Category</h2>
+                <img style="max-width: 90%; height: 70%;"
+                  src="../../../assets/assets/img/update2.png" alt="update">
+             </div>
+              
+             
+           
+          <form [formGroup]="categoryForm">
+            <div class="modal-header">
+              <h4 class="modal-title" *ngIf="categoryForm.value.id">fill edit form</h4>
+              <h4 class="modal-title" *ngIf="!categoryForm.value.id">fill creation form</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  class="form-control"
+                  id="name"
+                  type="text"
+                  formControlName="name"
+                  [ngClass]="{ 'error': categoryForm.get('name')?.invalid && submitted }"
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input
+                  class="form-control"
+                  id="description"
+                  type="text"
+                  formControlName="description"
+                  [ngClass]="{ 'error': categoryForm.get('description')?.invalid && submitted }"
+                />
+              </div>
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" formControlName="status">
+                  <option value="ACTIVE">Active</option>
+                  <option value="INACTIVE">Inactive</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="fileInput">Select an image file</label>
+                <input
+                  class="form-control"
+                  type="file"
+                  id="fileInput"
+                  (change)="onFileSelected($event)"
+                />
+                <img
+                  *ngIf="imagePreview"
+                  [src]="imagePreview"
+                  alt="Selected Image"
+                  style="max-width: 100px; max-height: 100px; margin-top: 10px;"
+                />
+                <img
+                  *ngIf="existingImage"
+                  [src]="existingImage"
+                  alt="Existing Image"
+                  style="max-width: 100px; max-height: 100px; margin-top: 10px;"
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-success"
+                type="button"
+                (click)="saveCategory()"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+    <app-footer></app-footer>
+  </div>
+</div>

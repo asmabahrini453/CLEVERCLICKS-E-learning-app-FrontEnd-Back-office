@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <!-- Navbar -->
+    <app-navbar></app-navbar>
+    <!-- End Navbar -->
+
+    <div class="content" style="background-color: white; margin: 24px;">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title text-center">Users Scores</h4>
+                <p class="card-category text-center">Here you find all Users Scores</p>
+              </div>
+              <div style="display: flex; justify-content: center;">
+                <img src="../../../assets/assets/img/progress.png" alt="">
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover table-striped ">
+                    <thead>
+                      <tr >
+                        <th >User Id</th>
+                        <th>Username</th>
+                        <th>User Email</th>
+                        <th >Score</th>
+                        <th>Quiz Id</th>
+                        <th>Quiz Title</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let score of scoreList">
+                        <td>{{ score.userId }}</td>
+                        <td>{{ score.name }}</td>
+                        <td>{{ score.email }}</td>
+                        <td>{{ score.score }}</td>
+                        <td>{{ score.quizId }}</td>
+
+                        <td>{{ score.quizTitle }}</td>
+                        <!-- <td>
+                          <a href="#deleteModal" class="delete" data-toggle="modal" (click)="selectScore(score)">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                          </a>
+                        </td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

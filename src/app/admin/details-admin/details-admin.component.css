@@ -1,0 +1,19 @@
+.form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .image-preview {
+    display: flex;
+    align-items: center;
+  }
+
+  .image-preview img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+  }

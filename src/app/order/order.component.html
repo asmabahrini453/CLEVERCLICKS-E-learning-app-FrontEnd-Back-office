@@ -1,0 +1,124 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <!-- Navbar -->
+    <app-navbar></app-navbar>
+    <!-- End Navbar -->
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card strpied-tabled-with-hover">
+              <div class="card-header">
+                <h4 class="card-title">Orders List</h4>
+                <p class="card-category">Here you find all placed orders</p>
+              </div>
+
+              <div class="card-body table-full-width table-responsive">
+                <!-- <div class="row mb-3">
+                    <div class="col-md-6">
+                      <form [formGroup]="searchCourseForm" (ngSubmit)="submitForm()">
+                        <div class="input-group">
+                          <input type="text" class="form-control" formControlName="title" placeholder="Search by Title" />
+                          <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div> -->
+
+                <table class="table table-hover table-striped">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      
+                      <th></th>
+
+                      <th>Username</th>
+                      <th>TotalAmount</th>
+                      <th>Created At</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let order of orderList">
+                      <td>{{ order.id }}</td>
+                      <td></td>
+                      <td>{{ order.username }}</td>
+                      <td>{{ order.totalAmount }} TND</td>
+                      <td>{{ order.createdAt | date }}</td>
+                      <td [ngClass]="{
+                        'status-approved': order.orderStatus === 'Approved',
+                        'status-refused': order.orderStatus === 'Refused'
+                      }">
+                        {{ order.orderStatus }}
+                      </td>
+                      
+                      <td>
+                        <div class="button-container">
+                        
+                          <button class="status-button approved" (click)="changeOrderStatus(order.id, 'Approved')">
+                            Approved
+                          </button>
+                          <button class="status-button refused" (click)="changeOrderStatus(order.id, 'Refused')">
+                            Refused
+                          </button>
+                        </div>
+                      </td>
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<!-- <div id="deleteModal" class="modal" *ngIf="selectedCourse">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Delete Confirmation</h2>
+
+    <div>
+      <p>
+        Are you sure you want to delete this Department
+        {{ selectedCourse.title }}?
+      </p>
+      <p><small>This action cannot be undone.</small></p>
+    </div>
+    <div>
+      <button class="btn btn-cancel" (click)="closeModal()">Cancel</button>
+
+      <button class="btn btn-delete" (click)="deleteCourse()">Delete</button>
+    </div>
+  </div>
+</div> -->
+<!-- Search Form -->
+<!-- 
+  <form [formGroup]="searchCourseForm" (submit)="submitForm">
+    <div>
+      <label for="Enter keyword to search"></label>
+      <input type="text" formControlName="title">
+      <button  [disabled]="searchCourseForm.invalid">
+        
+          <i class="nc-icon nc-zoom-split"></i>
+          <span class="d-lg-block">&nbsp;Search</span>
+      
+      
+      </button>
+    </div>
+    
+  
+  
+  </form> -->

@@ -1,0 +1,58 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="main-panel">
+        <!-- Navbar -->
+        <app-navbar></app-navbar>
+        <!-- End Navbar -->
+
+       <div class="content" style="background-color: white; margin-top: 24px;">
+        <div class="container" style="background-color: white; margin-top: 24px;">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Details Quiz</h2>
+                            <img class="img"  src="../../../assets/assets/img/quiz.png" alt="update">
+                        </div>
+                        
+                        <form [formGroup]="quizForm">
+                            <div class="modal-header">
+                                <h4 class="modal-title" *ngIf="quizForm.value.id">Edit Quiz</h4>
+                                <h4 class="modal-title" *ngIf="quizForm.value.new">Add Quiz</h4>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Quiz Title</label>
+                                    <input class="form-control" type="text" formControlName="quizTitle" name="quizTitle" [ngClass]="{ 'error': quizForm.get('quizTitle')?.invalid && submitted }" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Chapter</label>
+                                    <select  [ngClass]="{ 'error': quizForm.get('chapterId')?.invalid && submitted }" class="form-control" formControlName="chapterId" name="chapterId" required>
+                                        <option value="">Select chapter</option>
+                                        <option [value]="chapter.id" *ngFor="let chapter of chapterList">{{ chapter.title }}</option>
+                                    </select>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <input class="form-control" type="text" formControlName="status" name="status" [ngClass]="{ 'error': quizForm.get('status')?.invalid && submitted }" required />
+                                </div>
+                               
+                                
+                               
+                               
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-success" type="button" value="Save" (click)="saveQuiz()" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+         <app-footer></app-footer> 
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="main-panel">
+      <!-- Navbar -->
+      <app-navbar></app-navbar>
+      <!-- End Navbar -->
+  
+      <div class="content" >
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card strpied-tabled-with-hover">
+                <div class="card-header">
+                  <h4 class="card-title">Quiz Content</h4>
+                  <p class="card-category">Here you find all questions & options for the quizzes</p>
+                </div>
+              
+                <div class="card-body table-full-width table-responsive">
+                  <div class="row mb-3">
+                   <!--  <div class="col-md-6">
+                      <form [formGroup]="searchCourseForm" (ngSubmit)="submitForm()">
+                        <div class="input-group">
+                          <input type="text" class="form-control" formControlName="title" placeholder="Search by Title" />
+                          <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div> -->
+                  </div>
+                  <div class="col-sm-6 mb-3">
+                    <a [routerLink]="'/question/new'" class="btn btn-success">
+                      <i class="material-icons">&#xE147;</i> <span>Add New Question </span>
+                    </a>
+                  </div>
+                  <table class="table table-hover table-striped">
+                    <thead>
+                      <tr>
+                        <th>Question</th>
+                        <th>Option 1</th>
+                        <th>Option 2</th>
+                        <th>Option 3</th>
+                        <th>Right Answer Index</th>
+                        <th>Quiz</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let question of questionList">
+                     
+  
+                        <td>{{ question.questionText }}</td>
+                       
+                        <td>{{  question.option1}}</td>
+                        <td>{{  question.option2}}</td>
+                        <td>{{  question.option3}}</td>
+                        <td>{{  question.rightAnswerIndex}}</td>
+                        <td>{{  question.quizTitle}}</td>
+
+                      
+                      
+                        
+                       <td>
+                          <a [routerLink]="'/question/' + question.id" class="edit" data-toggle="modal">
+                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                          </a>
+                        <!--   <a href="#deleteModal" class="delete" data-toggle="modal" (click)="selectQuestion(question)">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                          </a> -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  
+  
+  <!-- Delete Modal -->
+  <div id="deleteModal" class="modal" *ngIf="selectedQuestion">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Delete Confirmation</h2>
+  
+      <div>
+        <p>
+          Are you sure you want to delete this Question
+          {{ selectedQuestion.questionText }}?
+        </p>
+        <p><small>This action cannot be undone.</small></p>
+      </div>
+      <div>
+        <button class="btn btn-cancel" (click)="closeModal()">Cancel</button>
+  
+        <button class="btn btn-delete" (click)="deleteQuestion()">Delete</button>
+      </div>
+    </div>
+  </div>
+  <!-- Search Form -->
+  <!-- 
+  <form [formGroup]="searchCourseForm" (submit)="submitForm">
+    <div>
+      <label for="Enter keyword to search"></label>
+      <input type="text" formControlName="title">
+      <button  [disabled]="searchCourseForm.invalid">
+        
+          <i class="nc-icon nc-zoom-split"></i>
+          <span class="d-lg-block">&nbsp;Search</span>
+      
+      
+      </button>
+    </div>
+    
+  
+  
+  </form> -->

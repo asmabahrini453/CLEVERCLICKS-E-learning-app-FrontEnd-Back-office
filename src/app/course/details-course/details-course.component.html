@@ -1,0 +1,85 @@
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="main-panel">
+        <!-- Navbar -->
+        <app-navbar></app-navbar>
+        <!-- End Navbar -->
+
+        <div class="content"style="background-color: white;margin: 24px;">
+            <div class="container">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Details Course</h2>
+                                <img style="max-width: 100%; height: 90%;"
+                                  src="../../../assets/assets/img/edit1.png" alt="update">
+                            </div>
+                            
+                            <form [formGroup]="courseForm">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" *ngIf="courseForm.value.id">Edit Course</h4>
+                                    <h4 class="modal-title" *ngIf="courseForm.value.new">Add Course</h4>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Title</label>
+                                        <input class="form-control" type="text" formControlName="title" name="title" [ngClass]="{ 'error': courseForm.get('title')?.invalid && submitted }" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select  [ngClass]="{ 'error': courseForm.get('categoryId')?.invalid && submitted }" class="form-control" formControlName="categoryId" name="categoryId" required>
+                                            <option value="">Select category</option>
+                                            <option [value]="category.id" *ngFor="let category of categoryList">{{ category.name }}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input class="form-control" type="text" formControlName="description" name="description" [ngClass]="{ 'error': courseForm.get('description')?.invalid && submitted }" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Rate</label>
+                                        <input class="form-control" type="text" formControlName="rate" name="rate" [ngClass]="{ 'error': courseForm.get('rate')?.invalid && submitted }" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input class="form-control" type="text" formControlName="price" name="price" [ngClass]="{ 'error': courseForm.get('price')?.invalid && submitted }" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <input class="form-control" type="text" formControlName="status" name="status" [ngClass]="{ 'error': courseForm.get('status')?.invalid && submitted }" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>
+                                            <span>Select an image file  </span>
+                                            <input class="form-control" type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+                                            <img src="../../../assets/assets/img/attach-file.png" alt="file"  style="max-width: 100px; max-height: 100px;">
+                                        </label>
+                                    </div>
+                                    
+                                    <div *ngIf="selectedFile">
+                                        <div>
+                                            <img [src]="imagePreview" alt="Selected Image"  style="max-width: 100px; max-height: 100px;" />
+                                        </div>
+                                    </div>
+                                    <div *ngIf="existingImage">
+                                        <div>
+                                            <img [src]="existingImage" alt="Existing Image"  style="max-width: 100px; max-height: 100px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input class="btn btn-success" type="button" value="Save" (click)="saveCourse()" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>

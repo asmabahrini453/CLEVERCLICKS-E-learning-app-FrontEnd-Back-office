@@ -1,0 +1,74 @@
+/* Improved styles for the form section */
+.container {
+    max-width: 800px; /* Set a maximum width for better responsiveness */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding for better spacing */
+}
+
+.table-wrapper {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.table-title {
+    padding-bottom: 15px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px; /* Add margin between form groups */
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+select {
+    width:400px; /* Calculate the width minus padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+input[type="file"] {
+    display: none; /* Hide the file input */
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Adjust image dimensions */
+.img {
+    margin-right: 40px;
+    margin-top:80px;
+    max-width: 80%; /* Make sure images don't exceed their container's width */
+    height: auto ; /* Maintain aspect ratio */
+}
+img {
+    max-width: 50%; /* Make sure images don't exceed their container's width */
+    height:  50%; /* Maintain aspect ratio */
+}
+.error {
+    color: red !important;
+    border: 1px solid red !important;
+}

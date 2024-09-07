@@ -1,0 +1,203 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <!-- Navbar -->
+    <app-navbar></app-navbar>
+    <!-- End Navbar -->
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card strpied-tabled-with-hover">
+              <div class="card-header">
+                <h4 class="card-title">List of Chapters</h4>
+                <p class="card-category">Here you find all courses</p>
+              </div>
+              <div class="card-body">
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-8">
+                    <form
+                      [formGroup]="searchForm"
+                      (ngSubmit)="submitForm()"
+                      class="form-inline"
+                    >
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="title"
+                          placeholder="Search by Title"
+                        />
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="submit">
+                            <i class="nc-icon nc-zoom-split"></i>
+                            Search
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+                    <a
+                      [routerLink]="'/chapter/new'"
+                      class="btn btn-success float-right"
+                    >
+                      <i class="material-icons">&#xE147;</i>
+                      <span>Add New Chapter</span>
+                    </a>
+                  </div>
+                </div>
+                <ul class="list-group">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let chapter of chapters; let chapterIndex = index"
+                  >
+                    <div style="display: flex; align-items: center">
+                      <strong style="font-size: 24px; margin-right: 10px"
+                        >Title:</strong
+                      >
+                      <span style="font-size: 24px">{{ chapter.title }}</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center ; margin-top: 16px;">
+                      <strong style="margin-right: 10px">Status:</strong>
+                      <span style="margin-right: 10px">{{
+                        chapter.status
+                      }}</span>
+                      <div >
+                        <button
+                          class="status-button approved"
+                          style="margin-right: 10px"
+                          (click)="changeChapterStatus(chapter.id, 'Active')"
+                          [class.hidden]="chapter.status === 'Active'"
+                        >
+                          Active
+                        </button>
+                        <button
+                          class="status-button refused"
+                          (click)="changeChapterStatus(chapter.id, 'Inactive')"
+                          [class.hidden]="chapter.status === 'Inactive'"
+                        >
+                          Inactive
+                        </button>
+                      </div>
+                    </div>
+
+                    <div style="text-align: justify">
+                      <strong style="margin-top: 10px">Contents:</strong>
+                      <ul style="padding-right: 10px">
+                        <li
+                          *ngFor="
+                            let content of chapter.contents.slice(
+                              0,
+                              showAllContents[chapterIndex]
+                                ? chapter.contents.length
+                                : 2
+                            )
+                          "
+                          style="padding-right: 10px"
+                        >
+                          {{ content }}
+                        </li>
+                      </ul>
+                      <div class="button-wrapper">
+                        <button
+                          class="custom-status-button"
+                          data-toggle="modal"
+                          (click)="toggleShowAllContents(chapterIndex)"
+                        >
+                          See more
+                        </button>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 10px">
+                      <strong style="margin-top: 10px">Images:</strong>
+                      <div class="container text-center">
+                        <div
+                          class="p-3 border bg-light d-flex flex-row justify-content-between align-items-center"
+                        >
+                          <div *ngFor="let image of chapter.images" class="p-2">
+                            <img
+                              *ngIf="image.processedImg"
+                              [src]="image.processedImg"
+                              alt="Chapter Image"
+                              style="border-radius: 10px"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="edit-button-wrapper">
+                      <a
+                        [routerLink]="'/chapter/' + chapter.id"
+                        class="edit-button btn btn-success btn-lg"
+                        data-toggle="modal"
+                      >
+                        <i
+                          class="material-icons"
+                          data-toggle="tooltip"
+                          title="Edit"
+                          >&#xE254;</i
+                        >
+                        Edit Chapter
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+                <div *ngIf="noChapterFound">
+                  <app-not-found
+                    (resetView)="resetChapterList()"
+                  ></app-not-found>
+                </div>
+                <nav
+                  aria-label="Page navigation example"
+                  *ngIf="chapters.length > 0"
+                >
+                  <ul class="pagination">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                      <a
+                        class="page-link"
+                        href="javascript:void(0)"
+                        (click)="previousPage()"
+                        >Previous</a
+                      >
+                    </li>
+                    <li
+                      class="page-item"
+                      *ngFor="let page of pages"
+                      [class.active]="currentPage === page"
+                    >
+                      <a
+                        class="page-link"
+                        href="javascript:void(0)"
+                        (click)="goToPage(page)"
+                        >{{ page }}</a
+                      >
+                    </li>
+                    <li
+                      class="page-item"
+                      [class.disabled]="currentPage === totalPages"
+                    >
+                      <a
+                        class="page-link"
+                        href="javascript:void(0)"
+                        (click)="nextPage()"
+                        >Next</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

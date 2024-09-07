@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="container my-form-container">
+      <div class="form-and-image">
+        <div class="image-container">
+          <img src="../../../assets/assets/img/edit.png" alt="update" class="edit-image">
+        </div>
+        <div class="form-container">
+          <h2 class="form-header">{{ chapterId === 'new' ? 'Add New Chapter' : 'Edit Chapter' }}</h2>
+          <form [formGroup]="chapterForm" (ngSubmit)="onSubmit()" class="chapter-form">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input type="text" id="title" formControlName="title" class="form-control form-input">
+            </div>
+            <div class="form-group">
+              <label for="content" class="form-label">Content:</label>
+              <textarea id="content" formControlName="content" class="form-control form-textarea"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="courseId" class="form-label">Course Title:</label>
+              <select id="courseId" formControlName="courseId" class="form-control form-select">
+                <option *ngFor="let course of courseList" [value]="course.id">{{ course.title }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="images" class="form-label">Images:</label>
+              <input type="file" id="images" (change)="onImageChange($event)" multiple class="form-control-file">
+            </div>
+            <div class="image-preview-container">
+              <div *ngFor="let preview of imagePreviews" class="image-preview">
+                <img [src]="preview" alt="Chapter Image" class="img-thumbnail">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success form-submit-button">{{ chapterId === 'new' ? 'Add Chapter' : 'Save Chapter' }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

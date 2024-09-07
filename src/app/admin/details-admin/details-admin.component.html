@@ -1,0 +1,95 @@
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+
+    <div class="content">
+      <div class="container-fluid ">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Edit Profile</h4>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="adminForm">
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Status</label>
+                        <input class="form-control" type="text" formControlName="status" name="status" [ngClass]="{ 'error': adminForm.get('status')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" type="text" formControlName="username" name="username" [ngClass]="{ 'error': adminForm.get('username')?.invalid && submitted }" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" type="text" formControlName="firstName" name="firstName" [ngClass]="{ 'error': adminForm.get('firstName')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" type="text" formControlName="lastName" name="lastName" [ngClass]="{ 'error': adminForm.get('lastName')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" type="email" formControlName="email" name="email" [ngClass]="{ 'error': adminForm.get('email')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control" type="text" formControlName="phone" name="phone" [ngClass]="{ 'error': adminForm.get('phone')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>About Me</label>
+                        <input class="form-control" type="text" formControlName="description" name="description" [ngClass]="{ 'error': adminForm.get('description')?.invalid && submitted }" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label>Select an image file</label>
+                      <input class="form-control" type="file" id="fileInput" (change)="onFileSelected($event)">
+                    </div>
+                    <div *ngIf="imagePreview">
+                      <div>
+                        <img [src]="imagePreview" alt="Selected Image" style="max-width: 100px; max-height: 200px;" />
+                      </div>
+                    </div>
+                    <div *ngIf="existingImage && !imgChange">
+                      <div>
+                        <img [src]="existingImage" alt="Existing Image" style="max-width: 100px; max-height: 200px;"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input class="btn btn-success" type="button" value="Save" (click)="saveAdmin()" />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

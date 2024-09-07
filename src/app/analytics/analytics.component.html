@@ -1,0 +1,40 @@
+<div class="container h-100">
+  <div class="row align-middle">
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-1">
+        <div class="txt">
+          <h1>PENDING ORDERS</h1>
+          <p>Number of Pending Orders: : {{ analyticsData?.pending }}</p> 
+        </div>
+        <a [routerLink]="'/order'">more</a>
+        <div class="ico-card">
+          <i class="fa fa-rebel"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-2">
+        <div class="txt">
+          <h1>APPROVED ORDERS</h1>
+          <p>Number of Approved Orders : {{ analyticsData?.approved }}</p> 
+        </div>
+        <a [routerLink]="'/order'">more</a>
+        <div class="ico-card">
+          <i class="fa fa-codepen"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-3">
+        <div class="txt">
+          <h1>REFUSED ORDERS</h1>
+          <p>Number of Refused Orders : {{ analyticsData?.refused }}</p> 
+        </div>
+        <a [routerLink]="'/order'">more</a>
+        <div class="ico-card">
+          <i class="fa fa-empire"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
